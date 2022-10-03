@@ -13,8 +13,5 @@ document.addEventListener("DOMContentLoaded", function(){
         window.location = "products.html"
     });
     logueado();
-    document.getElementById("cerrarsesion").addEventListener("click", function(){
-        cerrarsesion();
-    })
     mostrarusuario();
 });

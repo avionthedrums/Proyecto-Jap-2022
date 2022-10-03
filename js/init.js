@@ -9,6 +9,7 @@ const EXT_TYPE = ".json";
 const URL_GENIAL = PRODUCTS_URL + localStorage.getItem("catID") + EXT_TYPE
 const URL_INFO = PRODUCT_INFO_URL + localStorage.getItem("idproducto") + EXT_TYPE
 const URL_COMMENTS = PRODUCT_INFO_COMMENTS_URL + localStorage.getItem("idproducto") + EXT_TYPE
+const URL_RELATED = PRODUCT_INFO_URL + localStorage.getItem("relaID") + EXT_TYPE
 let showSpinner = function(){
   document.getElementById("spinner-wrapper").style.display = "block";
 }

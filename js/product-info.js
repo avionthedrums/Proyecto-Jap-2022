@@ -1,5 +1,6 @@
 let productosinfoArray = []
 let comentarios = []
+let URL_RELACIONADOS = [URL_INFO.relatedProducts]
 function mostrarusuario4(){
     let usuario = localStorage.getItem("user")
     document.getElementById("user3").innerHTML = 'Usuario: ' + usuario
@@ -43,14 +44,46 @@ return fotografias
 function mostrarcomentarios(array){
     let htmlContentToAppend =""
     for (comments of array){
-        htmlContentToAppend += `<li>
-        <h5>`+ comments.user+ `</h5>`+
-        `<p>`+comments.description+` </p> Puntuacion: `+ comments.score+` Fecha de publicacion: `+comments.dateTime + `</li> `+`<hr>`
+        htmlContentToAppend += `<li class="list-group-item ">
+        <b>`+ comments.user+ `</b>`+
+        `<p>`+comments.description+` </p> Puntuacion: `+ puntuacion(comments.score)+` Fecha de publicacion: `+comments.dateTime + `</li> `
         document.getElementById("comentarios").innerHTML = htmlContentToAppend;
     }
 
         }
+        function puntuacion(array){
+            let estrellas ="";
+            
+            for (let i = 1; i <= 5; i++){
+                if(i <= array){
+                    estrellas += `<i class="fa fa-star checked"></i>`;
+                    
+                }else {
+                    estrellas += `<i class="fa fa-star"></i>`;
+                } 
+            }
+            return estrellas;
+        }
+function idrelacionado(id) {
+        localStorage.setItem("idproducto", id);
+        window.location.replace("product-info.html")
+        }
+function prodrelacionados(array){
+    let htmlContentToAppend = ""
+    for(producto of array.relatedProducts){
+        htmlContentToAppend += `
+        <div class="card">
+        <img src= ${producto.image} class="card-img-top">
+        <div class="card-body">
+          <h5 class="card-title">${producto.name}</h5>
+          <div onclick="idrelacionado(${producto.id})" class="btn btn-primary">Ver producto</div>
+        </div>
+        </div>`
+    }
+    document.getElementById('productosrelacionados').innerHTML = htmlContentToAppend
+}
 
+//productsurl.relatedProducts
 document.addEventListener("DOMContentLoaded", function(e){
     getJSONData(URL_INFO).then(function(resultObj){
         if (resultObj.status === "ok")
@@ -58,6 +91,7 @@ document.addEventListener("DOMContentLoaded", function(e){
             productosinfoArray = resultObj.data;
             showProductInfo(productosinfoArray);
             hideSpinner();
+            prodrelacionados(productosinfoArray);
         }
     });
     getJSONData(URL_COMMENTS).then(function(resultObj){
@@ -67,5 +101,6 @@ document.addEventListener("DOMContentLoaded", function(e){
            mostrarcomentarios(comentarios);
         }
     });
+  
     mostrarusuario4();
 })
