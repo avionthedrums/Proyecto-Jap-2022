@@ -37,9 +37,44 @@
   </nav>
   <main>
     <div class="container">
-      <div class="alert alert-danger text-center" role="alert">
-        <h4 class="alert-heading">Funcionalidad en desarrollo</h4>
+      <div>
+        <br>
+        <h3 class="text-center fs-2 fst-italic">Carrito de compras</h3>
+        <div class="fst-italic fs-4">Articulos a comprar</div>
+        <div class="row">
+          <div class="col"></div>
+          <div class="col"> Nombre</div>
+          <div class="col"> Costo</div>
+          <div class="col"> Cantidad</div>
+          <div class="col"> Subtotal</div>
+          <hr class=" border border-1 border-dark">
+        </div>
+        <div class="row"id="carrito"></div>
       </div>
+      <br>
+      <br>
+      <div id="envio">
+        <h3>Tipo de envio</h3>
+        <input type="radio" name="envio" id="premium">
+        <label for="envio">Premium 2 a 5 días (15%)</label>
+        <br>
+        <input type="radio" name="envio" id="express">
+        <label for="envio">Express 5 a 8 días (8%)</label>
+        <br>
+        <input type="radio" name="envio" id="standard">
+        <label for="envio">Standard 12 a 15 días (5%)</label>
+        <br>
+        <br>
+        <h3>Direccion de envio</h3>
+        <div class="row">
+         <div class="col-md-6"> <input type="text" name="calle" placeholder="Calle" size="40" class="form-control"> </div>
+         <div class="col-md-2 "> <input type="text" name="numero" placeholder="Número" class="form-control"></div>
+      </div>
+      <br>
+      <div class="row">
+      <div class="col-md-6"> <input type="text" name="Esquina" placeholder="Esquina" class="form-control" size="40"></div>
+    </div>
+    <hr>
     </div>
   </main>
   <footer class="text-muted">

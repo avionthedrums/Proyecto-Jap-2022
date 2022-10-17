@@ -1,6 +1,5 @@
 let productosinfoArray = []
 let comentarios = []
-let URL_RELACIONADOS = [URL_INFO.relatedProducts]
 function mostrarusuario4(){
     let usuario = localStorage.getItem("user")
     document.getElementById("user3").innerHTML = 'Usuario: ' + usuario
@@ -9,8 +8,7 @@ function showProductInfo(array){
     let htmlContentToAppend = "";
 
         htmlContentToAppend += `
-                <div class="col">
-                        <div class="mb-1">
+                        <div class=" col-mb-6">
             
                         <br><br>
                         <h2 class= "text-center">`+ productosinfoArray.name+ `</h2> 
@@ -35,7 +33,7 @@ let fotografias = ""
 for (let foto of galeria){
 fotografias+= `
 <div class="col-3">
-<img src="` + foto +  `" alt="product image" class="img-thumbnail">
+<img src="${foto}" alt="product image" class="img-thumbnail">
 </div>`
 }
 return fotografias
@@ -72,11 +70,13 @@ function prodrelacionados(array){
     let htmlContentToAppend = ""
     for(producto of array.relatedProducts){
         htmlContentToAppend += `
-        <div class="card">
+        <div class= "col p-2">
+        <div class=" card ">
         <img src= ${producto.image} class="card-img-top">
         <div class="card-body">
           <h5 class="card-title">${producto.name}</h5>
           <div onclick="idrelacionado(${producto.id})" class="btn btn-primary">Ver producto</div>
+        </div>
         </div>
         </div>`
     }
