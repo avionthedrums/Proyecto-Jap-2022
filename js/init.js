@@ -12,25 +12,39 @@ const URL_COMMENTS = PRODUCT_INFO_COMMENTS_URL + localStorage.getItem("idproduct
 let showSpinner = function(){
   document.getElementById("spinner-wrapper").style.display = "block";
 }
-
 let hideSpinner = function(){
   document.getElementById("spinner-wrapper").style.display = "none";
 }
-function logueado(){
-  let usuario1 = localStorage.getItem("user")
-  if (usuario1 === null){
-      alert("Debe iniciar sesion")
-      location.href = "login.html"
-  }
-}
+
 function cerrarsesion(){
-  localStorage.removeItem("user")
+  localStorage.removeItem("useremail")
+  localStorage.removeItem("usuarioactivo")
   location.href = "login.html"
 }
+
 function mostrarusuario(){
-  let usuario3 = localStorage.getItem("user")
-  document.getElementById("nombredeusuario").innerHTML= `¡Hola!, ` + usuario3
+  let nombre = localStorage.getItem("useremail")
+  if (nombre === null){
+    alert("Debe iniciar sesion")
+    location.href = "login.html"
 }
+else{
+  document.getElementById("nombredeusuario").innerHTML= `¡Hola!, ` + nombre
+}
+}
+
+function userobject(){
+  let usuario = {}
+      usuario.nombre= document.getElementById("firstname").value,// lo toma de my_profile
+      usuario.apellido= document.getElementById("surname").value, // lo toma de my_profile
+      usuario.telefono= document.getElementById("phone").value,// lo toma de my_profile
+      usuario.email= document.getElementById("username").value // lo toma del login y lo imprime en my profile
+      usuario.segundoapellido = document.getElementById("email").value// lo toma de my_profile
+      usuario.segundonombre = document.getElementById("secondname").value// lo toma de my_profile
+      usuario.direccion = document.getElementById("address").value// lo toma de my_profile
+      localStorage.setItem("usuarioactivo", JSON.stringify(usuario))
+}
+
 let getJSONData = function(url){
     let result = {};
     showSpinner();

@@ -83,10 +83,10 @@ function sortAndShowCategories(sortCriteria, categoriesArray){
     //Muestro las categorías ordenadas
     showCategoriesList();
 }
-function mostrarusuario3(){
+/*function mostrarusuario3(){
     let usuario = localStorage.getItem("user")
     document.getElementById("user2").innerHTML = 'Usuario: ' + usuario
-}
+}*/
 
 //Función que se ejecuta una vez que se haya lanzado el evento de
 //que el documento se encuentra cargado, es decir, se encuentran todos los
@@ -97,7 +97,7 @@ document.addEventListener("DOMContentLoaded", function(e){
             currentCategoriesArray = resultObj.data
             showCategoriesList()
             //sortAndShowCategories(ORDER_ASC_BY_NAME, resultObj.data);
-            mostrarusuario3();
+            mostrarusuario();
         }
     });
 

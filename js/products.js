@@ -79,6 +79,16 @@ function ordenarbeta(){
       showCategoriesList(productosArray);
 
 }
+
+function search() {
+    let buscado = document.getElementById("search").value;
+    
+    let filtrado= productosArray.filter(producto => {
+        return (producto.name.toLowerCase().indexOf(buscado.toLowerCase()) > -1) || (producto.description.toLowerCase().indexOf(buscado.toLowerCase()) > -1);
+    })
+    showCategoriesList(filtrado);
+  }
+
 document.getElementById("limpiarfiltro").addEventListener("click", function (){
     limpiarfiltro();
 })
@@ -91,6 +101,9 @@ document.getElementById("sortAsc").addEventListener("click", function(){
 document.getElementById("sortDesc").addEventListener("click", function(){
     ordenarbeta();
 })
+document.getElementById("search").addEventListener("keyup", ()=>{
+    search();
+})
 document.addEventListener("DOMContentLoaded", function(e){
     getJSONData(URL_GENIAL).then(function(resultObj){
         if (resultObj.status === "ok")
@@ -100,6 +113,5 @@ document.addEventListener("DOMContentLoaded", function(e){
             hideSpinner()
         }
     });
-    mostrarusuario2();
-    //setProductId();
+    mostrarusuario();
 });
